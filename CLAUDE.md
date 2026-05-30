@@ -27,3 +27,22 @@ Single-file Streamlit app (`app.py`). The data flow is:
 **Adding a new stock**: add an entry to both `ACOES` (display name → B3 ticker) and `CORES` (display name → hex color). Everything else adapts automatically.
 
 **Chart library**: Plotly via `plotly.graph_objects` for candlestick/scatter/histogram/bar, `plotly.express` for heatmap and correlation matrix.
+
+## GitHub
+
+Repositório: **https://github.com/amandapaiva/stock-analysis**
+
+Cada alteração feita pelo Claude Code é automaticamente commitada e enviada ao GitHub. Isso é configurado via hook `PostToolUse` em `.claude/settings.json` — sempre que um arquivo é editado ou criado, o hook executa:
+
+```bash
+git add -A && git diff --cached --quiet || (git commit -m "auto: update project files" && git push origin master)
+```
+
+O git está configurado com `http.sslVerify false` localmente para contornar o problema de certificados SSL do Windows (mesmo root cause do `_SSL_CTX` na aplicação).
+
+Para push manual:
+
+```bash
+cd "C:/Users/amand/Downloads/VSCode"
+git add -A && git commit -m "mensagem" && git push origin master
+```
